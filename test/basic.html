@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link type="text/css" rel="stylesheet" href="../dist/d3-bullet-cvs.css">
+    <script src="//d3js.org/d3.v5.min.js"></script>
+    <script src="../dist/d3-bullet-cvs.js"></script>
+</head>
+<body>
+<svg></svg>
+<button>Update</button>
+<script>
+
+
+
+  var chart = d3.bulletcvs()
+    .width(960)
+    .height(100);
+
+  d3.json('bullets.json').then(function(data) {
+    chart.data(data);
+    var svg = d3.select('body').select('svg');
+    svg.call(chart);
+
+    d3.selectAll('button').on('click', function () {
+      svg.selectAll('g.bullet-cvs').datum(randomize);
+      svg.call(chart);
+    });
+  });
+
+  function randomize (d) {
+    if (!d.randomizer) d.randomizer = randomizer(d);
+    d.results = d.results.map(d.randomizer);
+    d.maxresults = d.maxresults.map(d.randomizer);
+    return d;
+  }
+
+  function randomizer (d) {
+    var k = d3.max(d.results) * .2;
+    return function (d) {
+      return Math.max(0, d + k * (Math.random() - .5));
+    };
+  }
+
+</script>
+</body>
+</html>

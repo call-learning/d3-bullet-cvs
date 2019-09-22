@@ -1,0 +1,44 @@
+{
+  "name": "d3-bullet-cvs",
+  "version": "1.0.0",
+  "description": "d3 bullet chart for cvs",
+  "keywords": [
+    "d3",
+    "d3-module",
+    "bullet",
+    "Compet Vet Suivi"
+  ],
+  "homepage": "https://github.com/call-learning/d3-bullet-cvs.git",
+  "author": {
+    "name": "Laurent David"
+  },
+  "license": "BSD-3-Clause",
+  "main": "build/d3-bullet-cvs.js",
+  "module": "src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/call-learning/d3-bullet-cvs.git"
+  },
+  "scripts": {
+    "test": "tape -r esm 'test/**/*-test.js' && eslint src test",
+    "prepublishOnly": "yarn test && rm -rf dist && rollup -c",
+    "postpublish": "git push && git push --tags && zip -j dist/${npm_package_name}.zip -- LICENSE README.md dist/${npm_package_name}.js dist/${npm_package_name}.min.js"
+  },
+  "dependencies": {
+    "d3-axis": "1",
+    "d3-scale": "3",
+    "d3-selection": "1",
+    "d3-timer": "1",
+    "d3-transition": "1",
+    "d3-scale-chromatic": "1"
+  },
+  "devDependencies": {
+    "@observablehq/tape": "^0.0.1",
+    "eslint": "6",
+    "esm": "3",
+    "rollup": "1",
+    "rollup-plugin-node-resolve": "5",
+    "rollup-plugin-terser": "5",
+    "rollup-plugin-css-porter": "1"
+  }
+}

@@ -1,0 +1,16 @@
+[
+  {
+    "groupshortname":"S1",
+    "groupname":"Semester 1",
+    "rlabels": ["Connaissances", "Capacité"],
+    "results":[1.5, 1],
+    "maxresults":[1.5, 1.5]
+  },
+  {
+    "groupshortname":"S2",
+    "groupname":"Semester 2",
+    "rlabels": ["Connaissances", "Capacité"],
+    "results":[0.5,0.5],
+    "maxresults":[1.5, 0.5]
+  }
+]
